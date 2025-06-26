@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Proyecto Social</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* === Estilos Base y Navbar === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #CBC9CC;
+      color: #CBC9CC;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* === Navbar === */
+    nav {
+      background: linear-gradient(to right, #9C90AA, #9C90AA);
+      padding: 0.8rem 2rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      max-width: 150px;
+    }
+
+    .logo img {
+      width: 100%;
+      max-height: 50px;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      height: 3px;
+      width: 25px;
+      background: #CBC9CC;
+      margin: 4px 0;
+    }
+
+    .menu {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 0.5rem;
+    }
+
+    .menu a {
+      font-weight: bold;
+      font-size: 1rem;
+      text-decoration: none;
+      color: #CBC9CC;
+      position: relative;
+    }
+
+    .menu a::after {
+      content: '';
+      display: block;
+      height: 2px;
+      background: #6E6189;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+      transform-origin: left;
+    }
+
+    .menu a:hover::after {
+      transform: scaleX(1);
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .menu {
+        flex-direction: column;
+        align-items: center;
+        display: none;
+      }
+
+      .menu.show {
+        display: flex;
+      }
+
+      nav {
+        align-items: stretch;
+      }
+    }
+
+    /* === Contenido === */
+    .contenido {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+      text-align: center;
+    }
+
+    .contenido h1 {
+      font-size: 2.5rem;
+      color: #0A0B24;
+      margin-bottom: 1.5rem;
+    }
+
+    .contenido p.descripcion {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+    }
+
+    .contenido img {
+      width: 100%;
+      max-width: 700px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      margin-bottom: 1rem;
+    }
+
+    .contenido .ubicacion {
+      font-size: 1.1rem;
+      color: #CBC9CC;
+      margin-bottom: 3rem;
+    }
+
+    .monto {
+      font-size: 2.8rem;
+      color: #6E6189;
+      font-weight: bold;
+      animation: parpadeo 1s infinite alternate;
+    }
+
+    @keyframes parpadeo {
+      from { opacity: 1; transform: scale(1); }
+      to { opacity: 0.7; transform: scale(1.05); }
+    }
+
+    /* === Footer === */
+    .footer {
+      background-color: #000003;
+      color: #CBC9CC;
+      padding: 2rem 1rem;
+      margin-top: 60px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+      gap: 2rem;
+    }
+
+    .footer-info h3 {
+      color: #9C90AA;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-info p {
+      margin: 0.2rem 0;
+    }
+
+    .social-icons a {
+      margin: 0 10px;
+      display: inline-block;
+    }
+
+    .social-icons img {
+      width: 28px;
+      height: 28px;
+      filter: brightness(0) invert(1);
+      transition: transform 0.3s;
+    }
+
+    .social-icons img:hover {
+      transform: scale(1.2);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-header">
+      <div class="logo">
+        <img src="img/logo.jpg" alt="Logo">
+      </div>
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <div class="menu" id="menu">
+      <a href="index.html">Inicio</a>
+      <a href="galeria.html">Galería</a>
+      <a href="reseñas.html">Reseña</a>
+      <a href="proyecto.html">Proyecto Social</a>
+    </div>
+  </nav>
+
+  <!-- CONTENIDO -->
+  <div class="contenido">
+    <h1>PROYECTO SOCIAL</h1>
+
+    <p class="descripcion" style="color: #0A0B24;">
+      Este proyecto busca mejorar la calidad de vida de comunidades vulnerables a través de actividades culturales, talleres educativos y apoyo logístico. Trabajamos de forma colaborativa con organizaciones locales para generar un impacto real y sostenible.
+    </p>
+
+    <img src="img/comunidad.jpg" alt="Foto de la comunidad">
+
+    <p class="ubicacion" style="color: #0A0B24;">Buenos Aires - Argentina</p>
+
+    <p class="monto">Inversión total: $25,000 USD</p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-info">
+        <h3>Dirección</h3>
+        <p>Av. Siempre Viva 123, Springfield</p>
+      </div>
+      <div class="footer-info">
+        <h3>Teléfono</h3>
+        <p>+51 987 654 321</p>
+      </div>
+      <div class="footer-info">
+        <h3>Redes Sociales</h3>
+        <div class="social-icons">
+          <a href="#"><img src="img/facebook.png" alt="Facebook"></a>
+          <a href="#"><img src="img/instagram.png" alt="Instagram"></a>
+          <a href="#"><img src="img/twitter.png" alt="Twitter"></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('menu').classList.toggle('show');
+    }
+  </script>
+
+</body>
+</html>

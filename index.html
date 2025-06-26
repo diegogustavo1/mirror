@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Menú Responsive con Video</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #CBC9CC;
+      color: #CBC9CC;
+    }
+
+    nav {
+      background: linear-gradient(to right, #9C90AA, #9C90AA);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 2rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      position: relative;
+      flex-wrap: wrap;
+      padding: 0.8rem 1.5rem;
+    }
+
+    .logo {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    max-width: 200px;
+    min-width: 100px;
+    }
+
+    .logo img {
+    width: 100%;
+    height: auto;
+    max-height: 50px;
+    object-fit: contain;
+    }
+
+    .menu {
+      display: flex;
+      gap: 2rem;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #0A0B24;
+    }
+
+    nav a::after {
+      content: '';
+      display: block;
+      height: 2px;
+      background: #6E6189;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+      transform-origin: left;
+    }
+
+    nav a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    }
+
+    .hamburger span {
+    height: 3px;
+    width: 25px;
+    background: #CBC9CC;
+    margin: 4px 0;
+    transition: 0.4s;
+    }
+
+    @media (max-width: 768px) {
+      .menu {
+        position: static;
+        transform: none;
+        flex-direction: column;
+        align-items: center;
+        background-color: #211E46;
+        width: 100%;
+        display: none;
+        margin-top: 1rem;
+        padding-bottom: 1rem;
+      }
+
+      .menu.show {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .logo {
+        margin-left: 1rem;
+      }
+    }
+
+    /* CONTENIDO CENTRADO */
+    .contenido {
+      text-align: center;
+      margin-top: 60px;
+      padding: 0 1rem;
+    }
+
+    .contenido h1 {
+      font-size: 3rem;
+      color: #0A0B24;
+      margin-bottom: 30px;
+      letter-spacing: 3px;
+    }
+
+    .contenido video {
+      width: 80%;
+      max-width: 800px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+
+    .mision-vision {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 60px auto;
+    flex-wrap: wrap;
+    padding: 0 1rem;
+    }
+
+    .card {
+    background-color: #211E46;
+    color: #CBC9CC;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    width: 350px;
+    max-width: 90%;
+    transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+    }
+
+    .card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #9C90AA;
+    }
+
+    .card p {
+    font-size: 1rem;
+    line-height: 1.5;
+    }
+
+    .footer {
+    background-color: #000003;
+    color: #CBC9CC;
+    padding: 2rem 1rem;
+    margin-top: 60px;
+    }
+
+    .footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: auto;
+    text-align: center;
+    gap: 2rem;
+    }
+
+    .footer-info h3 {
+    color: #9C90AA;
+    margin-bottom: 0.5rem;
+    }
+
+    .footer-info p {
+    margin: 0.2rem 0;
+    }
+
+    .social-icons a {
+    margin: 0 10px;
+    display: inline-block;
+    }
+
+    .social-icons img {
+    width: 28px;
+    height: 28px;
+    filter: brightness(0) invert(1); /* blanco */
+    transition: transform 0.3s;
+    }
+
+    .social-icons img:hover {
+    transform: scale(1.2);
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-header">
+    <div class="logo">
+      <img src="img/logo.jpg" alt="Logo">
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <div class="menu" id="menu">
+    <a href="index.html">Inicio</a>
+    <a href="galeria.html">Galería</a>
+    <a href="reseñas.html">Reseña</a>
+    <a href="proyecto.html">Proyecto Social</a>
+  </div>
+</nav>
+
+  <div class="contenido">
+    <h1>MIRROR</h1>
+    <video controls>
+      <source src="img/video.mp4" type="video/mp4">
+      Tu navegador no soporta la reproducción de video.
+    </video>
+  </div>
+
+  <!-- CONTENIDO DEBAJO DEL VIDEO -->
+    <div class="mision-vision">
+        <div class="card">
+            <h2>MISIÓN</h2>
+            <p>
+            Nuestra misión es brindar experiencias únicas que inspiren, transformen y conecten a las personas a través del arte, la innovación y el compromiso social.
+            </p>
+        </div>
+        <div class="card">
+            <h2>VISIÓN</h2>
+            <p>
+            Ser un referente creativo y humano que contribuya a una sociedad más reflexiva, solidaria y consciente de su poder transformador.
+            </p>
+        </div>
+    </div>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('menu').classList.toggle('show');
+    }
+  </script>
+  
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-info">
+            <h3>Dirección</h3>
+            <p>Av. Siempre Viva 123, Springfield</p>
+            </div>
+            <div class="footer-info">
+            <h3>Teléfono</h3>
+            <p>+51 987 654 321</p>
+            </div>
+            <div class="footer-info">
+            <h3>Redes Sociales</h3>
+            <div class="social-icons">
+                <a href="#"><img src="img/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="img/instagram.png" alt="Instagram"></a>
+                <a href="#"><img src="img/twitter.png" alt="Twitter"></a>
+            </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
